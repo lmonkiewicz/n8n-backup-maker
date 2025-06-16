@@ -1,12 +1,12 @@
-# Używamy oficjalnego obrazu Alpine z preinstalowanym Git'em jako bazy.
-# Jest lekki i bezpieczny.
-FROM alpine/git:latest
+# Używamy lekkiego i standardowego obrazu Alpine jako bazy.
+FROM alpine:latest
 
 # Instalujemy niezbędne pakiety:
+# git  - do operacji na repozytorium (teraz instalowany ręcznie)
 # curl - do wykonywania zapytań HTTP do API n8n
 # jq   - do parsowania odpowiedzi JSON
-# bash - dla pełnej kompatybilności skryptu (choć można go dostosować do sh)
-RUN apk add --no-cache curl jq bash
+# bash - dla pełnej kompatybilności skryptu
+RUN apk add --no-cache git curl jq bash
 
 # Ustawiamy katalog roboczy wewnątrz kontenera.
 WORKDIR /app/backup
@@ -16,4 +16,5 @@ COPY backup_workflows.sh /usr/local/bin/backup_workflows.sh
 RUN chmod +x /usr/local/bin/backup_workflows.sh
 
 # Definiujemy domyślną komendę, która zostanie uruchomiona po starcie kontenera.
+# Obraz bazowy `alpine` uruchomi tę komendę bezpośrednio w domyślnej powłoce.
 CMD ["backup_workflows.sh"]
