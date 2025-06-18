@@ -24,7 +24,7 @@ Do poprawnego działania skryptu musisz ustawić następujące zmienne środowis
 2.  Umieść pliki `Dockerfile` oraz `backup_workflows.sh` w jednym folderze.
 3.  W tym samym folderze utwórz plik `.env` i uzupełnij go swoimi zmiennymi:
     ```
-    N8N_URL=[https://n8n.twojadomena.pl](https://n8n.twojadomena.pl)
+    N8N_URL=https://n8n.twojadomena.pl
     N8N_API_KEY=twoj-klucz-api
     GIT_REPO_URL=https://uzytkownik:twoj-token@github.com/uzytkownik/repo.git
     GIT_USER_NAME=n8n-backup-bot
